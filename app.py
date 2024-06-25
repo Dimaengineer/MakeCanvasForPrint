@@ -1,20 +1,16 @@
 from flask import Flask, render_template, request, redirect, session, jsonify, send_file
 import shutil
-
-
 from requests_oauthlib import OAuth1Session
 import requests
 import json
 import os
-import shutil
 import traceback
 from PIL import Image, ImageDraw, ImageFont
 from openpyxl import load_workbook
 from io import BytesIO
 import time
 
-
-
+UsersInfo = {}
 
 def CreateFolder(FolderName):
     BasePath = os.path.join(os.getcwd(), 'MakePhotoForPrintWorker')
@@ -415,5 +411,4 @@ def CreateCanvasFunction():
 
 
 if __name__ == '__main__':
-    UsersInfo = {}
     app.run(debug=False)
