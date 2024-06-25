@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="Ua">
+    <head>
+        <meta charset="utf-8">
+        <title>Зробити полотно для друку</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='MakePhotoForPrint.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <p class="Title">Зробити полотно для друку</p>
+        <p class="Title2">Розмірна таблиця:<a href="https://docs.google.com/spreadsheets/d/1mv6epUufD3Q0UTisHDygZ7qRas8w9fHVIVh2dchitdo/export?format=xlsx">https://docs.google.com/spreadsheets/d/1mv6epUufD3Q0UTisHDygZ7qRas8w9fHVIVh2dchitdo/export?format=xlsx</a></p>
+        <form method="post" enctype="multipart/form-data">
+            
+            <input type="date" class="DatePicker" name="OrdersDate">
+
+            <div class="UploadFileInput">
+                <button type="button" class="UploadFileButton">Виберіть файл із айді замовлень<input type="file" placeholder="Виберіть файл із айді замовлен" name="OrdersFile" class="UploadInput" accept=".xlsx" onchange="document.querySelector('.UploadFileInput .UploadFileText').innerText = this.value.split('\\').pop().split('/').pop();" required></button>
+                
+                <p class="UploadFileText">файл не вибрано</p>
+            </div>
+
+            <button type="submit" class="StartCreatingButton">Створити</button>
+        </form>
+    </body>
+    <script>
+        document.getElementsByClassName("DatePicker")[0].valueAsDate = new Date();
+    </script>
+</html>

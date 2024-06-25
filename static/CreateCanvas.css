@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #dff1fd;
+}
+
+.Title {
+  color: rgb(57, 67, 58);
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.LoadContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ProgressBarContainer { 
+  background-color: rgb(192, 192, 192); 
+  width: 50%; 
+  height: 22px;
+  border-radius: 15px; 
+  display: flex;
+  align-items: center;
+} 
+
+.ProgressBar { 
+  background-color: rgb(57, 67, 58); 
+  color: white;
+  text-align: left; 
+  font-size: 16px; 
+  border-radius: 15px; 
+  height: 22px;
+  padding: 0px 2%;
+  width:0%;
+}
+
+.Title2 {
+  color: rgb(57, 67, 58);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.LogContainer{
+  display:inline-block;
+  width:70%;
+  height:50%;
+  border: 2px solid rgb(57, 67, 58);
+  background-color: white;
+  overflow: auto;
+  margin-top: 10px;
+}
+
+.LogText{
+  display:inline-block;
+  color: rgb(57, 67, 58);
+  font-size: 20px;
+  margin-top: 10px;
+}
