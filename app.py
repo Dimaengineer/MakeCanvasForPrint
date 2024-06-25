@@ -13,7 +13,7 @@ import time
 UsersInfo = {}
 
 def CreateFolder(FolderName):
-    BasePath = os.path.join(os.getcwd(), 'MakePhotoForPrintWorker')
+    BasePath = os.path.join(os.getcwd(), '')
     FolderPath = os.path.join(BasePath, FolderName)
     
     if os.path.exists(FolderPath):
@@ -44,7 +44,7 @@ def MakePhotoForPrint():
         DownloadOrders=request.files.get('OrdersFile')
 
         CreateFolder(str(session["UserId"]))
-        BasePath = os.path.join(os.getcwd(), 'MakePhotoForPrintWorker')
+        BasePath = os.path.join(os.getcwd(), '')
         FolderPath = os.path.join(BasePath, str(session["UserId"]))
         with open(f'{FolderPath}/OrdersFile.xlsx', 'wb') as OrdersFile:OrdersFile.write(DownloadOrders.read())
         UsersInfo[session["UserId"]]["FileInfo"]=f'{FolderPath}/OrdersFile.xlsx'
@@ -53,7 +53,7 @@ def MakePhotoForPrint():
         return redirect('/create_canvas')
     else:
         if "UserId" in session:
-            BasePath = os.path.join(os.getcwd(), 'MakePhotoForPrintWorker')
+            BasePath = os.path.join(os.getcwd(), '')
             os.remove(f'{BasePath}/ResultFiles{session["UserId"]}.zip')
             
         return render_template('MakePhotoForPrint.html')
@@ -63,7 +63,7 @@ def MakePhotoForPrint():
 @app.route('/download_canvas', methods=['GET', 'POST'])
 def DownloadCanvas():
     if request.method == 'POST':
-        BasePath = os.path.join(os.getcwd(), 'MakePhotoForPrintWorker')
+        BasePath = os.path.join(os.getcwd(), '')
         return send_file(f'{BasePath}/ResultFiles{session["UserId"]}.zip', as_attachment=True, download_name="ResultFiles.zip")
     else:
         return render_template('DownloadCanvas.html')
@@ -401,7 +401,7 @@ def CreateCanvasFunction():
         PictureSubli=PictureSubli.crop((0, PictureSubli.getbbox()[1], 3872, PictureSubli.getbbox()[3])) 
         PictureSubli.save(UsersInfo[session["UserId"]]["FolderPath"]+f'/ResultFiles/FinishImageSubli{str(PictureSubliNumber)}.tiff', dpi=(150, 150))
 
-    BasePath = os.path.join(os.getcwd(), 'MakePhotoForPrintWorker')        
+    BasePath = os.path.join(os.getcwd(), '')        
     shutil.make_archive(f'{BasePath}/ResultFiles{session["UserId"]}', 'zip', UsersInfo[session["UserId"]]["FolderPath"]+'/ResultFiles')
     if os.path.exists(UsersInfo[session["UserId"]]["FolderPath"]):
         shutil.rmtree(UsersInfo[session["UserId"]]["FolderPath"])
