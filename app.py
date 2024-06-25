@@ -65,6 +65,7 @@ def MakePhotoForPrint():
 @app.route('/download_canvas', methods=['GET', 'POST'])
 def DownloadCanvas():
     if request.method == 'POST':
+        print([f for f in os.listdir('.') if os.path.isfile(f)])
         BasePath = os.getcwd()
         return send_file(f'{BasePath}/ResultFiles{session["UserId"]}.zip', as_attachment=True, download_name="ResultFiles.zip")
     else:
