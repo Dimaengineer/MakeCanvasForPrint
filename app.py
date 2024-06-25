@@ -52,8 +52,8 @@ def MakePhotoForPrint():
 
         return redirect('/create_canvas')
     else:
-        if "UserId" in session:
-            BasePath = os.path.join(os.getcwd(), '')
+        BasePath = os.path.join(os.getcwd(), '')
+        if "UserId" in session and os.path.exists(f'{BasePath}/ResultFiles{session["UserId"]}.zip'):
             os.remove(f'{BasePath}/ResultFiles{session["UserId"]}.zip')
             
         return render_template('MakePhotoForPrint.html')
